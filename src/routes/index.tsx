@@ -60,8 +60,12 @@ function App() {
   const [copied, setCopied] = useState(false);
   const [history, setHistory] = useState<HistoryItem[]>([]);
 
-  useEffect(() => setHistory(loadHistory()), []);
-  useEffect(() => window.scrollTo({ top: 0 }), [step]);
+  useEffect(() => {
+    setHistory(loadHistory());
+  }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [step]);
 
   const runAnalysis = () => {
     const a = analyze(job, resume);
